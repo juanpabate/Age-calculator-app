@@ -160,6 +160,31 @@ function calculateAge(){
             days= days + 31;
         }
     }
+    const yearsP= document.querySelector('.years-p');
+    const monthsP= document.querySelector('.months-p');
+    const daysP= document.querySelector('.days-p');
+
+    switch(true){
+        case(days == 1):
+            drawNumbers(years, months, days);
+            daysP.innerText= 'day';
+            
+
+        case(months == 1):
+            drawNumbers(years, months, days);
+            monthsP.innerText= 'month';
+            
+
+        case(years == 1):
+            drawNumbers(years, months, days);
+            yearsP.innerText= 'year';
+            
+        default: 
+            drawNumbers(years, months, days);
+            break;
+    }    
+}
+function drawNumbers(years, months, days){
     numberYear.innerText= years;
     numberMonth.innerText= months;
     numberDay.innerText= days;

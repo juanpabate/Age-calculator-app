@@ -134,10 +134,11 @@ span{
   color: hsl(0, 100%, 67%);
 }
 
-@media(max-width: 415px){
+@media(max-width: 590px){
   .main-container{
     width: 340px;
-    height: 480px;
+    height: 440px;
+    border-bottom-right-radius: 25%;
   }
   input{
     width: 75px;
@@ -161,7 +162,7 @@ span{
   .data-container{
     margin-top: 35px;
     border-top: 2px solid hsl(0, 0%, 86%);
-    padding-top: 55px;
+    padding-top: 20px;
   }
   ul{
     list-style: none;
