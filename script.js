@@ -168,17 +168,12 @@ function calculateAge(){
         case(days == 1):
             drawNumbers(years, months, days);
             daysP.innerText= 'day';
-            
-
         case(months == 1):
             drawNumbers(years, months, days);
             monthsP.innerText= 'month';
-            
-
         case(years == 1):
             drawNumbers(years, months, days);
             yearsP.innerText= 'year';
-            
         default: 
             drawNumbers(years, months, days);
             break;
