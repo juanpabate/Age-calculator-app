@@ -105,7 +105,7 @@ enterButton.addEventListener('click', ()=>{
     verifyIsFilled(inputMonth, labelMonth, 'MONTH');
 
 
-    if(inputYear.value.length < 4){
+    if(inputYear.value.length < 4 || (parseInt(inputYear.value) < 1000)){
         showError(inputYear, labelYear);
     }
     else if(inputDay.classList.contains('input-error') || inputMonth.classList.contains('input-error') || inputYear.classList.contains('input-error')){
@@ -157,27 +157,42 @@ function calculateAge(){
         years--;
         if(days < 0){
             months--;
-            days= days + 31;
+            days= days + 31;  
         }
+    }else if(days < 0){
+        months--;
+        days= days + 31;
     }
-    const yearsP= document.querySelector('.years-p');
-    const monthsP= document.querySelector('.months-p');
-    const daysP= document.querySelector('.days-p');
+    let yearsP= document.querySelector('.years-p');
+    let monthsP= document.querySelector('.months-p');
+    let daysP= document.querySelector('.days-p');
 
-    switch(true){
-        case(days == 1):
-            drawNumbers(years, months, days);
-            daysP.innerText= 'day';
-        case(months == 1):
-            drawNumbers(years, months, days);
-            monthsP.innerText= 'month';
-        case(years == 1):
-            drawNumbers(years, months, days);
-            yearsP.innerText= 'year';
-        default: 
-            drawNumbers(years, months, days);
-            break;
-    }    
+    const array= [[years, yearsP],[months, monthsP],[days, daysP]];
+
+    drawNumbers(years, months, days);
+    resetValues(daysP, monthsP, yearsP);
+
+    array.map(e=> {
+        if((e[1].innerText.slice(-1) != 's') && e[0] != 1){
+            e[1].innerText= `${e[1].innerText}s`;
+        }else if((e[1].innerText.slice(-1) == 's') && e[0] == 1){
+            let singular= e[1].innerText.slice(0, e[1].innerText.length - 1);
+            e[1].innerText= singular;
+        }
+    });
+
+
+    // switch(true){
+    //     case(days == 1):
+    //         daysP.innerText= 'day';
+    //     case(months == 1):
+    //         monthsP.innerText= 'month';
+    //     case(years == 1):
+    //         yearsP.innerText= 'year';
+    //     default: 
+    //         drawNumbers(years, months, days);
+    //         break;
+    // }    
 }
 function drawNumbers(years, months, days){
     numberYear.innerText= years;
@@ -188,4 +203,9 @@ function wrongData(){
     numberYear.innerText= '--';
     numberMonth.innerText= '--';
     numberDay.innerText= '--';
+}
+function resetValues(days, months, years){
+    days.innerText= 'days';
+    months.innerText= 'months'
+    years.innerText= 'years';
 }
