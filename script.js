@@ -16,6 +16,8 @@ const numberMonth= document.querySelector('.number-month');
 const now= new Date();
 
 const year= now.getFullYear();
+const month= now.getMonth();
+
 
 
 //INPUTS VALIDATIONS
@@ -92,7 +94,10 @@ inputYear.addEventListener('input', ()=>{
 
     if((parseInt(inputYear.value) > year) || inputYear.value == '0000'){
         showError(inputYear, labelYear);
-    }else{
+    }else if ((parseInt(inputYear.value) == year) && (parseInt(inputMonth.value) > month)){
+        showError(inputYear, labelYear);
+    }
+    else{
         hideError(inputYear, labelYear, 'YEAR');
     }
 });

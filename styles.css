@@ -162,7 +162,7 @@ span{
   .data-container{
     margin-top: 35px;
     border-top: 2px solid hsl(0, 0%, 86%);
-    padding-top: 20px;
+    padding-top: 45px;
   }
   ul{
     list-style: none;
@@ -171,10 +171,10 @@ span{
   }
   li{
     display: flex;
-    font-size: 47px;
+    font-size: 45px;
     font-weight: 800;
     font-style: italic;
-    line-height: 75px;
+    line-height: 60px;
     color: hsl(0, 0%, 8%);
   }
 }
